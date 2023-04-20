@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  #サインイン後はAboutへ
+  #サインイン後はUser showへ
   def after_sign_in_path_for(resource)
-    about_path
+    user_path(current_user.id)
   end
   
   #サインアウト後はrootへ

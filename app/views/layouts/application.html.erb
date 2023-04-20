@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-        <!--link→packに変更-->
+      <!--link→packに変更-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -16,7 +16,7 @@
     <!--ログイン時とログアウト時の表示を変える-->
     <% if user_signed_in? %>
       <li>
-        <%= link_to "Home", books_path %>
+        <%= link_to "Home", user_path(current_user.id) %>
       </li>
       <li>
         <%= link_to "Users", users_path(current_user.id) %>
@@ -29,10 +29,16 @@
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "Home", books_path %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "About", about_path %>
+      </li>
+      <li>
+        <%= link_to "Sign Up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Log In", new_user_session_path %>
       </li>
     <% end %>
   </header>
