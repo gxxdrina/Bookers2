@@ -1,9 +1,37 @@
-<h1>Book detail</h1>
+<!--フラッシュメッセージ-->
+<% if flash[:notice] %>
+  <div class="alert alert-primary" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
 
-  <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <p><%= link_to @book.user.name, user_path(@user.id) %></p>
-  <p><%= link_to @book.title, book_path %></p>
-  <p><%= @book.body %></p>
-    <%= link_to 'Edit', edit_book_path(@book.id) %>
-    <%= link_to 'Destroy', book_path(@book.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-4">
+      <%= render 'users/info', user: current_user %>
+    </div>
+    
+    <div class="col-md-8">
+      <h2>Book detail</h2>
+      <table class=table>
+        <tr>
+          <td>
+            <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+            <p><%= link_to @book.user.name, user_path(@user.id) %></p>
+          </td>
+          <td><%= link_to @book.title, book_path %></td>
+          <td><%= @book.body %></td>
+      
+        <!--ログインしているユーザーのIDが一致してたら編集可-->
+        <% if @user == current_user %>
+          <td><%= link_to 'Edit', edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
+          <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-sm btn-danger" %></td>
+        <% end %>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
 

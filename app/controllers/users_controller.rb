@@ -14,8 +14,10 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id]) #ユーザーの取得
-    @user.update(user_params) #ユーザーのアップデート
-    redirect_to user_path(@user.id) #ユーザーの詳細ページへのパス  
+    if @user.update(user_params) #ユーザーのアップデート
+      flash[:notice] = "You have updated user successfully."
+    redirect_to user_path(@user.id) #userのShowパス
+    end
   end
   
   def index

@@ -16,4 +16,7 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #バリデーションの設定
+
+
 end
