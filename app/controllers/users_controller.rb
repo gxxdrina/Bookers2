@@ -16,12 +16,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) #ユーザーの取得
     if @user.update(user_params) #ユーザーのアップデート
       flash[:notice] = "You have updated user successfully."
-    redirect_to user_path(@user.id) #userのShowパス
+      redirect_to user_path(@user.id) #userのShowパス
+    else
+     render :edit
     end
   end
   
   def index
     @users = User.all
+    @book = Book.new
   end
 
   private
@@ -33,7 +36,7 @@ class UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to books_path
+      redirect_to user_path(current_user)
     end
   end
 

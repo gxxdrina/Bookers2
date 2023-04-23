@@ -34,7 +34,7 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to users_path(current_user.id), class: 'nav-link text-white' do %>
+            <%= link_to users_path, class: 'nav-link text-white' do %>
             <i class="fas fa-users"></i>
             Users
             <% end %>
@@ -53,13 +53,13 @@
           </li>
           <% else %> <!-- ログインしていない時 -->
           <li class="nav-item">
-            <%= link_to books_path, class: 'nav-link text-white' do %>
+            <%= link_to root_path, class: 'nav-link text-white' do %>
             <i class="fas fa-home"></i>
             Home
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to about_path, class: 'nav-link text-white' do %>
+            <%= link_to home_about_path, class: 'nav-link text-white' do %>
             <i class="fas fa-link"></i>
             About
             <% end %>
@@ -67,13 +67,13 @@
           <li class="nav-item">
             <%= link_to new_user_registration_path, class: 'nav-link text-white' do %>
             <i class="fas fa-user-plus"></i>
-            Sign Up
+            Sign up
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_user_session_path, class: 'nav-link text-white' do %>
             <i class="fas fa-sign-in-alt"></i>
-            Log In
+            Log in
             <% end %>
           <% end %>
           </ul>
